@@ -1,0 +1,89 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>page liste</title>
+		<!-- l'appel de {$url_base} vous permet de recupérer le chemin de votre site web  -->
+         <link  rel="stylesheet" href="{$url_base}public/css/bootstrap.min.css"/>
+        <link  rel="stylesheet" href="{$url_base}public/css/fontawesome-all.css"/>
+        <link rel="stylesheet" href="{$url_base}public/css/myanimate.css"/>
+        <script src="{$url_base}public/swal/dist/sweetalert.min.js"></script>
+        <script src="{$url_base}public/swal/dist/sweetalert.css"></script>
+		<style>
+			h1{ 
+				color: #40007d;
+			}
+		</style>
+        <script type="text/javascript">
+            function confirmation(){
+                var msg=confirm("Voulez vous supprimer?");
+
+                if(msg){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+
+
+
+        </script>
+
+	</head>
+	<body>
+
+    <div class="nav navbar navbar-fixed-top" style="background-color: #00b8d4;color: floralwhite;font-family: cursive;">
+        <ul class="nav navbar-nav" style="margin-left: 400px;">
+            <!-- l'appel de {$url_base} vous permet de recupérer le chemin de votre site web  -->
+            <li class="hovacc" style="display: flex;background-color: #00b8d4;"><a href="{$url_base}Accueil/index"  style="color: floralwhite;" ><img src="{$url_base}/public/image/homeeau.jpg" style="width: 22px; border-radius: 5px"/>ACCUEIL</a></li>
+            <li class="hovabn"><a href="#" style="color: floralwhite;" >ABONNEMENT</a></li>
+            <li class="hovfac"><a href="{$url_base}Facture/liste" style="color: floralwhite;" >FACTURE</a></li>
+            <li  class="hovreg"><a href="{$url_base}Reglement/liste" style="color: floralwhite;">REGLEMENT</a></li>
+            <li class="hovcli"><a href="{$url_base}Client/liste" style="color: floralwhite;" >CLIENT</a></li>
+            <li class="hovcom"><a href="{$url_base}Compteur/liste" style="color: floralwhite;" >COMPTEUR</a></li>
+
+        </ul>
+		</div>
+
+    <div class="col-md-8 col-xs-12 col-md-offset-2" style="margin-top:150px; font-family: cursive" >
+			<div class="panel panel-info" style="background-color: #00b8d4;border-color: #00b8d4;border: solid 4px #00b8d4;">
+				<div class="panel-heading" style="background-color: #ffffff;font-family: cursive;text-shadow: 5px 5px #00b8d4;color: floralwhite;text-decoration: solid;text-align: center;font-size: 30px; ">LISTE DES ABONNEMENTS</div>
+				<div class="panel-body"  style="background-color: #ffffff;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">
+
+					{if isset($abonnements)}
+						{if $abonnements != null}
+							<table class="table table-bordered table-stripped"  style="background-color: #00b8d4;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">
+								<tr  style="border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px;color: floralwhite;">
+									<th  style="border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">Id</th>
+                                    <th  style="border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">Numero Compteur</th>
+                                    <th  style="border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">Carte D'Identite</th>
+                                    <th  style="border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">Prenom</th>
+                                    <th  style="border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">Nom</th>
+                                    <th  style="border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">Date Abonnement</th>
+                                    <th  style="border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">Action</th>
+									<th  style="border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">Action</th>
+								</tr>
+								{foreach from=$abonnements item=abonnement}
+									<tr  style="background-color: #ffffff;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px;color: #00b8d4;">
+										    <td  style="background-color: #ffffff;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">{$abonnement['Nab']}</td>
+                                            <td  style="background-color: #ffffff;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">{$abonnement['NumC']}</td>
+                                            <td  style="background-color: #ffffff;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">{$abonnement['cin']}</td>
+                                            <td  style="background-color: #ffffff;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">{$abonnement['prenom']}</td>
+                                            <td  style="background-color: #ffffff;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">{$abonnement['nom']}</td>
+                                            <td  style="background-color: #ffffff;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">{$abonnement['dateab']}</td>
+                                        <td  style="background-color: #ffffff;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px"><a href="{$url_base}Abonnement/edit/{$abonnement['Nab']}" ><center><img src="{$url_base}public/image/edit.png" style="width: 24px;" /></center></a></td>
+										<td  style="background-color: #ffffff;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px"><a href="{$url_base}Abonnement/delete/{$abonnement['Nab']}"><center><img src="{$url_base}public/image/deletepubel.png " style="width: 20px;"/></center></a></td>
+									</tr>
+								{/foreach}
+							</table>
+						{else}
+							Liste vide
+						{/if}
+					{/if}
+				</div>
+				<a href="{$url_base}Abonnement/add" style="color: floralwhite; text-decoration: none;">Ajout d'un abonnement<img src="{$url_base}public/image/add.jpg " style="width: 20px;border-radius: 5px;margin-left: 3px;"/></a>
+			</div>
+		</div>
+		
+	</body>
+</html>

@@ -1,0 +1,130 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>page get id</title>
+		<!-- l'appel de {$url_base} vous permet de recupérer le chemin de votre site web  -->
+		<link type="text/css" rel="stylesheet" href="{$url_base}public/css/bootstrap.min.css"/>
+		<link  rel="stylesheet" href="{$url_base}public/css/jquery-ui.css"/>
+        <link rel="stylesheet" href="{$url_base}public/css/myanimate.css"/>
+        <script type="text/javascript" src="{$url_base}public/js/jquery.js"></script>
+
+        <script type="text/javascript" src="{$url_base}public/js/jquery-ui.js"></script>
+        <script src="{$url_base}public/swal/dist/sweetalert.min.js"></script>
+        <script src="{$url_base}public/swal/dist/sweetalert.css"></script>
+        <script src="{$url_base}public/swal/dist/sweetalert-dev.js"></script>
+		<style>
+			h1{
+				color: #40007d;
+			}
+		</style>
+        <script type="text/javascript">
+            function myAlertSuccess(){
+                var div = document.getElementById("alertsuccess");
+                div.firstChild.nodeValue = swal({
+                    title : "Settlement",
+                    text : "New Settlement Added",
+                    imageUrl : "{$url_base}public/image/successalert.png",
+                    html : true
+                });
+            }
+
+
+        </script>
+        <script type="text/javascript">
+            function myAlertWarning(){
+                var div = document.getElementById("alertwarning");
+                div.firstChild.nodeValue = div.firstChild.nodeValue = sweetAlert("Oups", "Settlement not save", "error");}
+
+        </script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //alert("ok");
+                $facture = $("#idFacture");
+                $facture.on("change", function () {
+                    $v_idFacture = $facture.val();
+                    //alert($v_idF);
+                    $.ajax({
+                        url: "{$url_base}Facture/getFacturesJson/" + $v_idFacture,
+                        dataType: "json",
+                        success: function (json) {
+                            $.each(json, function (index, value) {
+                                //alert(value);
+                                if (index == 0)
+                                    $("#montant").val(value);
+                                if(value != null){
+                                    $("#montant").attr('readonly','readonly');
+                                    //$("#nom").attr('disabled','disabled');
+                                }
+                                if (index == 1)
+                                    $("#montantL").val(value);
+                                if(value != null){
+                                    $("#montantL").attr('readonly','readonly');
+                                    //$("#prenom").attr('disabled','disabled');
+                                }
+                            });
+                        }
+                    });
+                });
+            });
+            //alert("ok")
+        </script>
+	</head>
+	<body>
+    <div class="nav navbar navbar-fixed-top" style="background-color: #00b8d4;color: floralwhite;font-family: cursive;">
+
+        <ul class="nav navbar-nav" style="margin-left: 400px;">
+            <!-- l'appel de {$url_base} vous permet de recupérer le chemin de votre site web  -->
+            <li class="hovacc" style="display: flex;background-color: #00b8d4;"><a href="{$url_base}Accueil/index"  style="color: floralwhite;" ><img src="{$url_base}/public/image/homeeau.jpg" style="width: 22px; border-radius: 5px"/>ACCUEIL</a></li>
+            <li class="hovabn"><a href="{$url_base}Abonnement/liste" style="color: floralwhite;" >ABONNEMENT</a></li>
+            <li class="hovfac"><a href="{$url_base}Facture/liste" style="color: floralwhite;" >FACTURE</a></li>
+            <li  class="hovreg"><a href="{$url_base}Reglement/liste" style="color: floralwhite;">REGLEMENT</a></li>
+            <li class="hovcli"><a href="{$url_base}Client/liste" style="color: floralwhite;" >CLIENT</a></li>
+            <li class="hovcom"><a href="{$url_base}Compteur/liste" style="color: floralwhite;" >COMPTEUR</a></li>
+
+        </ul>
+
+    </div>
+
+		<div class="col-md-8 col-xs-12 col-md-offset-2" style="margin-top:150px;">
+			<div class="panel panel-info"  style="background-color: #00b8d4;border-color: #00b8d4;border: solid 4px #00b8d4;">
+				<div class="panel-heading" style="background-color: #ffffff;font-family: cursive;text-shadow: 5px 5px #00b8d4;color: floralwhite;text-decoration: solid;text-align: center;font-size: 30px; ">REGLEMENT FACTURE</div>
+				<div class="panel-body">
+					{if isset($ok)}
+					{if $ok != 0}
+					<div class="alert alert-success" style="display: flex;">Data Added</div>
+
+					{else}
+					<div class="alert alert-warning">Data Not Added</div>
+					{/if}
+					{/if}
+                    <form method="post" action="{$url_base}Reglement/add" style="font-family: cursive;color: floralwhite;">
+                        <div class="form-group">
+                            <label class="control-label">ID Facture</label>
+                            <input class="form-control" type="text" name="idFacture" id="idFacture" required="require"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Montant En Chiffre</label>
+                            <input class="form-control" type="text" name="montant" id="montant"  required="require"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Montant En Lettre</label>
+                            <input class="form-control" type="text" name="montantL" id="montantL"  required="require"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Date</label>
+                            {$dt=date('d/m/Y')}
+                            <input class="form-control" type="text" name="date" id="date" value="{$dt}" readonly required="require"/>
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-success" type="submit" name="valider" value="ENvoyer"/>
+                            <input class="btn btn-danger" type="reset" name="annuler" value="Annuler"/>
+                        </div>
+                    </form>
+				</div>
+			</div>
+		</div>
+    <script type="text/javascript">myAlertSuccess()</script>
+    <script type="text/javascript">myAlertWarning()</script>
+	</body>
+</html>

@@ -1,0 +1,148 @@
+.r:hover{
+    animation-duration: 5s;
+    animation-name: ra;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes ra {
+    from {
+        margin-left: 2%;
+        width: 120px;
+    }
+
+    to {
+        margin-right: 2%;
+        width: 120px;
+        transform: rotate(360deg);
+    }
+
+}
+
+.abn:hover{
+    animation-duration: 5s;
+    animation-name: abnr;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes abnr {
+    from {
+        width: 230px;
+        text-decoration: solid;
+        transform: rotate(40deg);
+        background-color: #4fc3f7;
+    }
+
+    to {
+        width: 200px;
+    }
+
+}
+
+
+.fac:hover{
+    animation-duration: 5s;
+    animation-name: facr;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes facr {
+    from {
+        width: 230px;
+        text-decoration: solid;
+        transform: rotate(40deg);
+        background-color: #4fc3f7;
+    }
+
+    to {
+        width: 200px;
+    }
+
+}
+
+.reg:hover{
+    animation-duration: 5s;
+    animation-name: regr;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes regr {
+    from {
+        width: 230px;
+        text-decoration: solid;
+        transform: rotate(40deg);
+        background-color: #4fc3f7;
+    }
+
+    to {
+        width: 200px;
+    }
+
+}
+
+.myalert{
+    animation-duration: 5s;
+    animation-name: mal;
+    animation-iteration-count: 5;
+    animation-direction: alternate;
+}
+
+@keyframes mal {
+    from {
+        margin-top: 3%;
+        width: 120px;
+    }
+
+    to {
+        margin-bottom: 2%;
+        width: 120px;
+        transform: rotate(5deg);
+    }
+
+}
+
+
+.hovacc:hover{
+    background-color: floralwhite;
+    text-decoration-color: #00b8d4;
+    color: #00b8d4;
+    font-size: 16px;
+}
+
+.hovabn:hover{
+    background-color: floralwhite;
+    text-decoration-color: #00b8d4;
+    color: #00b8d4;
+    font-size: 16px;
+}
+
+.hovcli:hover{
+    background-color: floralwhite;
+    text-decoration-color: #00b8d4;
+    color: #00b8d4;
+    font-size: 16px;
+}
+
+.hovcom:hover{
+    background-color: floralwhite;
+    text-decoration-color: #00b8d4;
+    color: #00b8d4;
+    font-size: 16px;
+}
+
+.hovfac:hover{
+    background-color: floralwhite;
+    text-decoration-color: #00b8d4;
+    color: #00b8d4;
+    font-size: 16px;
+}
+
+.hovreg:hover{
+    background-color: floralwhite;
+    text-decoration-color: #00b8d4;
+    color: #00b8d4;
+    font-size: 16px;
+}

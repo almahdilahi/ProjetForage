@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>page d'accueil</title>
+		<!-- l'appel de {$url_base} vous permet de recupérer le chemin de votre site web  -->
+        <link rel="stylesheet" href="{$url_base}public/css/bootstrap.min.css"/>
+        <link type="text/css" rel="stylesheet" href="{$url_base}public/css/jquery-ui.css"/>
+        <link rel="stylesheet" href="{$url_base}public/css/myanimate.css"/>
+        <script type="text/javascript" src="{$url_base}public/js/jquery.js"></script>
+
+        <!-- integration de javascript dans le moteur de rendu de vue Smarty -->
+		{literal}
+			<script language=javascript>
+			 function load_design() {
+			   document.getElementById("design_js").style.color = "#40007d";
+			 }
+
+			</script>
+		{/literal}
+
+	</head>
+	<body onload="load_design()">
+
+  <!--  <img src="{$url_base}public/image/robgt.jpg" style="margin-top: -30px;width: 190px" />-->
+<center>
+    <div style="width: 1000px;margin-top: 100px">
+        <a  style="box-shadow:10px 35px #00b8d4;text-decoration: none;font-family: cursive;font-size: 100px;color: #00b8d4" class="picsenforage">SEN FORAGE</a>
+    </div>
+</center>
+
+
+<center>
+    <div style="display: flex;width: 1000px;justify-content: space-between;margin-top: 180px; font-family: Arial;">
+
+        <a href="{$url_base}Abonnement/liste" >
+
+            <div style="width: 200px; height: 100px;border-radius: 30px ;border:solid 2px #00b8d4;" class="abn" >
+             <a href="{$url_base}Abonnement/liste" style="box-shadow:5px 5px #00b8d4;text-decoration: none;">ABONNEMENT</a>
+            </div>
+
+        </a>
+
+        <a href="{$url_base}Facture/liste">
+
+            <div style="width: 200px; height: 100px;border-radius: 30px ;border:solid 2px #00b8d4;margin-left: 100px;" class="fac">
+            <a href="{$url_base}Facture/liste" style="box-shadow:5px 5px #00b8d4;text-decoration: none;">FACTURE</a>
+            </div>
+
+        </a>
+
+        <a href="{$url_base}Reglement/add">
+
+        <div style="width: 200px; height: 100px;border-radius: 30px ;border:solid 2px #00b8d4;margin-left: 100px; " class="reg">
+            <a href="{$url_base}Reglement/add" style="box-shadow:5px 5px #00b8d4;text-decoration: none;">REGLEMENT</a>
+        </div>
+
+        </a>
+    </div>
+</center>
+    <div style="width: 1000px; margin-top: 50px;" >
+        <img src="{$url_base}public/image/eau7.jpg" style="width: 1451px;height: 184px;" />
+    </div>
+    </body>
+</html>
+
+

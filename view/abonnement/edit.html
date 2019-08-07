@@ -1,0 +1,95 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>page get id</title>
+		<!-- l'appel de {$url_base} vous permet de recupérer le chemin de votre site web  -->
+		<link rel="stylesheet" href="{$url_base}public/css/bootstrap.min.css"/>
+        <script type="text/javascript" src="{$url_base}public/js/jquery.js"></script>
+
+        <script type="text/javascript" src="{$url_base}public/js/jquery-ui.js"></script>
+        <link rel="stylesheet" href="{$url_base}public/css/myanimate.css"/>
+
+		<style>
+			h1{ 
+				color: #40007d;
+			}
+		</style>
+
+
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //alert("ok");
+                $client = $("#idClient");
+                //$compte = $("#compte");
+                //$compte.hide();
+                $client.append("<option value=''>Faites un choix</option>");
+                $.ajax({
+                    url: "{$url_base}Client/listeJson",
+                    data: "go",
+                    dataType: "json",
+                    success: function (json) {
+                        $.each(json, function (index, value) {
+                            $client.append("<option value='" + index + "'>" + value + "</option>");
+                        });
+                    }
+                });
+
+
+            });
+            //alert("ok")
+        </script>
+    </head>
+	<body>
+    <div class="nav navbar navbar-fixed-top" style="background-color: #00b8d4;color: floralwhite;font-family: cursive;">
+
+        <ul class="nav navbar-nav" style="margin-left: 400px;">
+            <!-- l'appel de {$url_base} vous permet de recupérer le chemin de votre site web  -->
+            <li class="hovacc" style="display: flex;background-color: #00b8d4;"><a href="{$url_base}Accueil/index"  style="color: floralwhite;" ><img src="{$url_base}/public/image/homeeau.jpg" style="width: 22px; border-radius: 5px"/>ACCUEIL</a></li>
+            <li class="hovabn"><a href="{$url_base}Abonnement/liste" style="color: floralwhite;" >ABONNEMENT</a></li>
+            <li class="hovfac"><a href="{$url_base}Facture/liste" style="color: floralwhite;" >FACTURE</a></li>
+            <li  class="hovreg"><a href="{$url_base}Reglement/liste" style="color: floralwhite;">REGLEMENT</a></li>
+            <li class="hovcli"><a href="{$url_base}Client/liste" style="color: floralwhite;" >CLIENT</a></li>
+            <li class="hovcom"><a href="{$url_base}Compteur/liste" style="color: floralwhite;" >COMPTEUR</a></li>
+        </ul>
+
+    </div>
+		<div class="col-md-8 col-xs-12 col-md-offset-2" style="margin-top:150px;">
+			<div class="panel panel-info" style="background-color: #00b8d4;border-color: #00b8d4;border: solid 4px #00b8d4;">
+				<div class="panel-heading"  style="background-color: #ffffff;font-family: cursive;text-shadow: 5px 5px #00b8d4;color: floralwhite;text-decoration: solid;text-align: center;font-size: 30px; ">MODIFICATION ABONNEMENT</div>
+				<div class="panel-body">
+					<form method="post" action="{$url_base}Abonnement/update" style="font-family: cursive;color: floralwhite;">
+						<div class="form-group">
+							<label class="control-label">Identifiant</label>
+							<input class="form-control" type="text" name="Nab" id="Nab" readonly value="{if isset($abonnement)} {$abonnement['Nab']} {/if}"/>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Date</label>
+                            {$dt=date('d/m/Y')}
+							<input class="form-control" type="text" name="dateab" id="dateab" readonly  value="{$dt}"/>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Description</label>
+							<input class="form-control" type="text" name="description" id="description" required="require" value="{if isset($abonnement)} {$abonnement['description']} {/if}"/>
+						</div>
+
+                        <div class="form-group">
+                            <label class="control-label">Numero Abonnement</label>
+                            <input class="form-control" type="text" name="numero" id="numero" readonly value="{if isset($abonnement)} {$abonnement['numero']} {/if}"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Client</label>
+                            <select class="form-control" name="idClient" required="require" id="idClient"></select>
+                        </div>
+
+
+                        <div class="form-group">
+							<input class="btn btn-success" type="submit" name="modifier" value="Modifier"/>
+							<a class="btn btn-primary" href="{$url_base}Abonnement/liste">Retour</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

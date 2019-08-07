@@ -1,0 +1,77 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>page get id</title>
+		<!-- l'appel de {$url_base} vous permet de recupérer le chemin de votre site web  -->
+		<link type="text/css" rel="stylesheet" href="{$url_base}public/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="{$url_base}public/css/myanimate.css"/>
+		<style>
+			h1{ 
+				color: #40007d;
+			}
+		</style>
+	</head>
+	<body>
+    <div class="nav navbar navbar-fixed-top" style="background-color: #00b8d4;color: floralwhite;font-family: cursive;">
+
+        <ul class="nav navbar-nav" style="margin-left: 400px;">
+            <!-- l'appel de {$url_base} vous permet de recupérer le chemin de votre site web  -->
+            <li class="hovacc" style="display: flex;background-color: #00b8d4;"><a href="{$url_base}Accueil/index"  style="color: floralwhite;" ><img src="{$url_base}/public/image/homeeau.jpg" style="width: 22px; border-radius: 5px"/>ACCUEIL</a></li>
+            <li class="hovabn"><a href="{$url_base}Abonnement/liste" style="color: floralwhite;" >ABONNEMENT</a></li>
+            <li class="hovfac"><a href="{$url_base}Facture/add" style="color: floralwhite;" >FACTURE</a></li>
+            <li  class="hovreg"><a href="{$url_base}Reglement/add" style="color: floralwhite;">REGLEMENT</a></li>
+            <li class="hovcli"><a href="{$url_base}Client/liste" style="color: floralwhite;" >CLIENT</a></li>
+            <li class="hovcom"><a href="{$url_base}Compteur/liste" style="color: floralwhite;" >COMPTEUR</a></li>
+
+        </ul>
+
+    </div>
+		<div class="col-md-8 col-xs-12 col-md-offset-2" style="margin-top:150px;">
+			<div class="panel panel-info" style="background-color: #00b8d4;border-color: #00b8d4;border: solid 4px #00b8d4;">
+				<div class="panel-heading" style="background-color: #ffffff;font-family: cursive;text-shadow: 5px 5px #00b8d4;color: floralwhite;text-decoration: solid;text-align: center;font-size: 30px; ">MODIFICATION CLIENT</div>
+				<div class="panel-body">
+					<form method="post" action="{$url_base}Client/update" style="font-family: cursive;color: floralwhite;">
+						<div class="form-group">
+							<label class="control-label">Identifiant</label>
+							<input class="form-control" type="text" name="idC" id="idC" readonly value="{if isset($client)} {$client['idC']} {/if}"/>
+						</div>
+                        <div class="form-group">
+                            <label class="control-label">Carte d'Identite</label>
+                            <input class="form-control" type="text" name="cin" id="cin"  value="{if isset($client)} {$client['cin']} {/if}"/>
+                        </div>
+						<div class="form-group">
+							<label class="control-label">Nom</label>
+							<input class="form-control" type="text" name="nom" id="nom" required="require" value="{if isset($client)} {$client['nom']} {/if}"/>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Prenom</label>
+							<input class="form-control" type="text" name="prenom" id="prenom" required="require" value="{if isset($client)} {$client['prenom']} {/if}"/>
+						</div>
+
+                        <div class="form-group">
+                            <label class="control-label">Chef de Village</label>
+                            <input class="form-control" type="text" name="nomCV" id="nomCV" required="require" value="{if isset($client)} {$client['nomCV']} {/if}"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Village</label>
+                            <input class="form-control" type="text" name="village" id="village" required="require" value="{if isset($client)} {$client['village']} {/if}"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Adresse</label>
+                            <input class="form-control" type="text" name="adresse" id="adresse" required="require" value="{if isset($client)} {$client['adresse']} {/if}"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Telephone</label>
+                            <input class="form-control" type="text" name="tel" id="tel" required="require" value="{if isset($client)} {$client['tel']} {/if}"/>
+                        </div>
+
+                        <div class="form-group">
+							<input class="btn btn-success" type="submit" name="modifier" value="Modifier"/>
+							<a class="btn btn-primary" href="{$url_base}Client/liste">Retour</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

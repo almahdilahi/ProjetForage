@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>page get id</title>
+		<!-- l'appel de {$url_base} vous permet de recupérer le chemin de votre site web  -->
+		<link type="text/css" rel="stylesheet" href="{$url_base}public/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="{$url_base}public/css/myanimate.css"/>
+		<style>
+			h1{ 
+				color: #40007d;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="{$url_base}public/image/logo.jpg" class="resize" />
+		<div class="nav navbar navbar-default navbar-fixed-top">
+			<ul class="nav navbar-nav">
+				<!-- l'appel de {$url_base} vous permet de recupérer le chemin de votre site web  -->
+				<li><a href="{$url_base}Test/index">Menu page test</a></li>
+				<li><a href="{$url_base}Test/getID/1">Menu page test 2</a></li>
+				<li><a href="{$url_base}Test/liste">Menu page test liste</a></li>
+			</ul>
+		</div>
+		<div class="col-md-8 col-xs-12 col-md-offset-2" style="margin-top:150px;">
+			<div class="panel panel-info">
+				<div class="panel-heading">BIENVENUE A VOTRE MODELE MVC</div>
+				<div class="panel-body">
+					<form method="post" action="{$url_base}Client/update">
+						<div class="form-group">
+							<label class="control-label">Identifiant</label>
+							<input class="form-control" type="text" name="idC" id="idC" value="{if isset($client)} {$client['idC']} {/if}"/>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Nom</label>
+							<input class="form-control" type="text" name="nom" id="nom" value="{if isset($client)} {$client['nom']} {/if}"/>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Prenom</label>
+							<input class="form-control" type="text" name="prenom" id="prenom" value="{if isset($client)} {$client['prenom']} {/if}"/>
+						</div>
+
+                        <div class="form-group">
+                            <label class="control-label">Chef de Village</label>
+                            <input class="form-control" type="text" name="nomCV" id="nomCV" value="{if isset($client)} {$client['nomCV']} {/if}"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Village</label>
+                            <input class="form-control" type="text" name="village" id="village" value="{if isset($client)} {$client['village']} {/if}"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Adresse</label>
+                            <input class="form-control" type="text" name="adresse" id="adresse" value="{if isset($client)} {$client['adresse']} {/if}"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Telephone</label>
+                            <input class="form-control" type="text" name="tel" id="tel" value="{if isset($client)} {$client['tel']} {/if}"/>
+                        </div>
+
+                        <div class="form-group">
+							<input class="btn btn-success" type="submit" name="modifier" value="Modifier"/>
+							<a class="btn btn-primary" href="{$url_base}Client/liste">Retour</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

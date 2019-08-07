@@ -1,0 +1,89 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>page liste</title>
+		<!-- l'appel de {$url_base} vous permet de recupérer le chemin de votre site web  -->
+		<link type="text/css" rel="stylesheet" href="{$url_base}public/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="{$url_base}public/css/myanimate.css"/>
+		<style>
+			h1{ 
+				color: #40007d;
+			}
+		</style>
+	</head>
+
+    <script type="text/javascript">
+        function myAlert(){
+            var div = document.getElementById("alertuser");
+            div.firstChild.nodeValue = swal({
+                title : "User",
+                text : "New User Added",
+                imageUrl : "<?php echo $base_url; ?>public/image/rob2.jpg",
+                html : true
+            });
+        }
+        myAlert();
+
+    </script>
+
+    <body>
+    <div class="nav navbar navbar-fixed-top" style="background-color: #00b8d4;color: floralwhite;font-family: cursive;">
+        <ul class="nav navbar-nav" style="margin-left: 400px;">
+            <!-- l'appel de {$url_base} vous permet de recupérer le chemin de votre site web  -->
+            <li class="hovacc" style="display: flex;background-color: #00b8d4;"><a href="{$url_base}Accueil/index"  style="color: floralwhite;" ><img src="{$url_base}/public/image/homeeau.jpg" style="width: 22px; border-radius: 5px"/>ACCUEIL</a></li>
+            <li class="hovabn"><a href="{$url_base}Abonnement/liste" style="color: floralwhite;" >ABONNEMENT</a></li>
+            <li class="hovfac"><a href="{$url_base}Facture/liste" style="color: floralwhite;" >FACTURE</a></li>
+            <li  class="hovreg"><a href="{$url_base}Reglement/liste" style="color: floralwhite;">REGLEMENT</a></li>
+            <li class="hovcli"><a href="#" style="color: floralwhite;" >CLIENT</a></li>
+            <li class="hovcom"><a href="{$url_base}Compteur/liste" style="color: floralwhite;" >COMPTEUR</a></li>
+
+        </ul>
+    </div>
+		<div class="col-md-8 col-xs-12 col-md-offset-2" style="margin-top:150px;font-family: cursive;width: 1250px;margin-left: 105px">
+			<div class="panel panel-info" style="background-color: #00b8d4;border-color: #00b8d4;border: solid 4px #00b8d4;">
+				<div class="panel-heading" style="background-color: #ffffff;font-family: cursive;text-shadow: 5px 5px #00b8d4;color: floralwhite;text-decoration: solid;text-align: center;font-size: 30px; ">LISTE DES CLIENTS</div>
+				<div class="panel-body" style="background-color: #ffffff;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">
+
+					{if isset($clients)}
+						{if $clients != null}
+							<table class="table table-bordered table-stripped"  style="background-color: #00b8d4;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">
+
+                                <tr  style="border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px;color: floralwhite;">
+                                    <th  style="border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">Identifiant</th>
+                                    <th  style="border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">ID Carte</th>
+                                    <th  style="border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">Nom</th>
+                                    <th  style="border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">Prenom</th>
+                                    <th  style="border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">Chef de Village</th>
+                                    <th  style="border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">Village</th>
+                                    <th  style="border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">Adresse</th>
+                                    <th  style="border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">Telephone</th>
+                                    <th  style="border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">Action</th>
+                                    <th  style="border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">Action</th>
+                                </tr>
+								{foreach from=$clients item=client}
+                                <tr  style="background-color: #ffffff;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px;color: #00b8d4;">
+                                    <td  style="background-color: #ffffff;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">{$client['idC']}</td>
+                                    <td  style="background-color: #ffffff;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">{$client['cin']}</td>
+                                    <td  style="background-color: #ffffff;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">{$client['nom']}</td>
+                                    <td  style="background-color: #ffffff;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">{$client['prenom']}</td>
+                                    <td  style="background-color: #ffffff;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">{$client['nomCV']}</td>
+                                    <td  style="background-color: #ffffff;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">{$client['village']}</td>
+                                    <td  style="background-color: #ffffff;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">{$client['adresse']}</td>
+                                    <td  style="background-color: #ffffff;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px">{$client['tel']}</td>
+                                    <td  style="background-color: #ffffff;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px"><a href="{$url_base}Client/edit/{$client['idC']}" ><center><img src="{$url_base}public/image/edit.png" style="width: 24px;" /></center></a></td>
+                                    <td  style="background-color: #ffffff;border-color: #00b8d4;border:solid 5px #00b8d4;border-radius: 5px"><a href="{$url_base}Client/delete/{$client['idC']}" onclick='javascript: return confirmation()'><center><img src="{$url_base}public/image/deletepubel.png " style="width: 20px;"/></center></a></td>
+                                </tr>
+								{/foreach}
+							</table>
+						{else}
+							Liste vide
+						{/if}
+					{/if}
+				</div>
+                <!-- 				<a href="{$url_base}Client/add" style="color: floralwhite; text-decoration: none;">Ajout d'un client<img src="{$url_base}public/image/add.jpg " style="width: 20px;border-radius: 5px;margin-left: 3px;"/></a>
+                -->
+			</div>
+		</div>
+		
+	</body>
+</html>

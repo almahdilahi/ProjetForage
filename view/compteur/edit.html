@@ -1,0 +1,94 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>page get id</title>
+		<!-- l'appel de {$url_base} vous permet de recupérer le chemin de votre site web  -->
+		<link rel="stylesheet" href="{$url_base}public/css/bootstrap.min.css"/>
+        <script type="text/javascript" src="{$url_base}public/js/jquery.js"></script>
+
+        <script type="text/javascript" src="{$url_base}public/js/jquery-ui.js"></script>
+        <link rel="stylesheet" href="{$url_base}public/css/myanimate.css"/>
+		<style>
+			h1{
+				color: #40007d;
+			}
+		</style>
+        <!--<script type="text/javascript">
+            $(document).ready(function () {
+                //alert("ok");
+                $abonnement = $("#idAbonnement");
+                //$compte = $("#compte");
+                //$compte.hide();
+                $abonnement.append("<option value=''>Faites un choix</option>");
+                $.ajax({
+                    url: "{$url_base}Abonnement/listeJson",
+                    data: "go",
+                    dataType: "json",
+                    success: function (json) {
+                        $.each(json, function (index, value) {
+                            $abonnement.append("<option value='" + index + "'>" + value + "</option>");
+                        });
+                    }
+                });
+
+
+            });
+            //alert("ok")
+        </script>-->
+	</head>
+	<body>
+    <div class="nav navbar navbar-fixed-top" style="background-color: #00b8d4;color: floralwhite;font-family: cursive;">
+
+        <ul class="nav navbar-nav" style="margin-left: 400px;">
+            <!-- l'appel de {$url_base} vous permet de recupérer le chemin de votre site web  -->
+            <li class="hovacc" style="display: flex;background-color: #00b8d4;"><a href="{$url_base}Accueil/index"  style="color: floralwhite;" ><img src="{$url_base}/public/image/homeeau.jpg" style="width: 22px; border-radius: 5px"/>ACCUEIL</a></li>
+            <li class="hovabn"><a href="{$url_base}Abonnement/liste" style="color: floralwhite;" >ABONNEMENT</a></li>
+            <li class="hovfac"><a href="{$url_base}Facture/liste" style="color: floralwhite;" >FACTURE</a></li>
+            <li  class="hovreg"><a href="{$url_base}Reglement/liste" style="color: floralwhite;">REGLEMENT</a></li>
+            <li class="hovcli"><a href="{$url_base}Client/liste" style="color: floralwhite;" >CLIENT</a></li>
+            <li class="hovcom"><a href="{$url_base}Compteur/liste" style="color: floralwhite;" >COMPTEUR</a></li>
+        </ul>
+
+    </div>
+		<div class="col-md-8 col-xs-12 col-md-offset-2" style="margin-top:150px;">
+			<div class="panel panel-info" style="background-color: #00b8d4;border-color: #00b8d4;border: solid 4px #00b8d4;">
+				<div class="panel-heading" style="background-color: #ffffff;font-family: cursive;text-shadow: 5px 5px #00b8d4;color: floralwhite;text-decoration: solid;text-align: center;font-size: 30px; ">MODIFICATION COMPTEUR</div>
+				<div class="panel-body">
+					<form method="post" action="{$url_base}Compteur/update">
+						<div class="form-group">
+							<label class="control-label">Identifiant</label>
+							<input class="form-control" type="text" name="idCompteur" id="idCompteur" readonly value="{if isset($compteur)} {$compteur['idCompteur']} {/if}"/>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Numero</label>
+							<input class="form-control" type="text" name="NumC" id="NumC" readonly value="{if isset($compteur)} {$compteur['NumC']} {/if}"/>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Consommation</label>
+							<input class="form-control" type="text" name="consChiffre" required="require" id="consChiffre" value="{if isset($compteur)} {$compteur['consChiffre']} {/if}"/>
+						</div>
+
+                        <div class="form-group">
+                            <label class="control-label">Abonnement</label>
+                            <input class="form-control" type="text" name="idAbonnement" required="require" readonly id="idAbonnement" value="{if isset($compteur)} {$compteur['idAbonnement']} {/if}"/>
+                        </div>
+												<div class="form-group">
+													<label class="control-label">Etat</label>
+													<input class="form-control" type="text" name="etat" required="require" id="etat" value="{if isset($compteur)} {$compteur['etat']} {/if}"/>
+												</div>
+
+                        <!--<div class="form-group">
+                            <label class="control-label">Abonnement</label>
+                            <select class="form-control" name="idAbonnement" required="require" id="idAbonnement"></select>
+                        </div>
+                        -->
+                        <div class="form-group">
+							<input class="btn btn-success" type="submit" name="modifier" value="Modifier"/>
+							<a class="btn btn-primary" href="{$url_base}Compteur/liste">Retour</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
